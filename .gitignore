@@ -1,12 +1,27 @@
 t
  
-b 
+bscvdb
+
+ 
  
 exit
 quit
 
 
 
+.DS_Store
+:wq
+:w
+:W
+q
+visual
+:wx
+asfdgcn
+dfbn c
+des
+
+:q
+exit
 
 
 
