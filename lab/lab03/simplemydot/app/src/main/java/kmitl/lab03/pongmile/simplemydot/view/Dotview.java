@@ -6,7 +6,10 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
+
+import java.util.ArrayList;
 
 import kmitl.lab03.pongmile.simplemydot.model.Dot;
 
@@ -14,39 +17,60 @@ import kmitl.lab03.pongmile.simplemydot.model.Dot;
 public class Dotview extends View {
 
     private Paint paint;
-    private Dot dot;
+    private ArrayList<Dot> dots;
+    private OnTouchListener listener;
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        paint.setColor(Color.RED);
-        if(this.dot != null){
-            canvas.drawCircle(this.dot.getCenterX(), this.dot.getCenterY(), 30, paint);
+        if (this.dots != null) {
+            for (Dot dot : dots) {
+                paint.setColor(dot.getColor());
+                canvas.drawCircle(dot.getCenterX(), dot.getCenterY(), dot.getRadius(), paint);
+            }
         }
-        
     }
 
     public Dotview(Context context) {
         super(context);
         paint = new Paint();
+        dots = new ArrayList<>();
     }
 
     public Dotview(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         paint = new Paint();
+        dots = new ArrayList<>();
     }
 
     public Dotview(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         paint = new Paint();
+        dots = new ArrayList<>();
     }
 
     public Dotview(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
+        super(context, attrs, defStyleAttr);
         paint = new Paint();
+        dots = new ArrayList<>();
     }
 
-    public void setDot(Dot dot) {
-        this.dot = dot;
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        listener.onTouch(this, event);
+
+        return super.onTouchEvent(event);
+    }
+
+    public void addDot(Dot dot) {
+        dots.add(dot);
+    }
+
+    public void clear() {
+        dots.clear();
+    }
+
+    public void setOnTouchListener(OnTouchListener listener) {
+        this.listener = listener;
     }
 }

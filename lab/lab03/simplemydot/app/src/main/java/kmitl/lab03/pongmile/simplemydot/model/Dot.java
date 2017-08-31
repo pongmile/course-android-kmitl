@@ -1,5 +1,10 @@
 package kmitl.lab03.pongmile.simplemydot.model;
 
+import android.view.MotionEvent;
+import android.view.View;
+
+import kmitl.lab03.pongmile.simplemydot.MainActivity;
+
 public class Dot {
 
     public interface OnDotChangedListener {
@@ -7,20 +12,18 @@ public class Dot {
     }
 
     private OnDotChangedListener listener;
-
-    public void setListener(OnDotChangedListener listener) {
-        this.listener = listener;
-    }
-
     private int centerX;
     private int centerY;
     private int radius;
+    private int color;
 
-    public Dot(OnDotChangedListener listener, int centerX, int centerY, int radius) {
+    public Dot(int centerX, int centerY, int radius, int color, OnDotChangedListener listener) {
         this.listener = listener;
         this.centerX = centerX;
         this.centerY = centerY;
         this.radius = radius;
+        this.color = color;
+
         this.listener.onDotChanged(this);
     }
 
@@ -30,6 +33,10 @@ public class Dot {
         this.radius = radius;
     }
 
+    public void setListener(OnDotChangedListener listener) {
+        this.listener = listener;
+    }
+
     public int getCenterX() {
         return centerX;
     }
@@ -37,7 +44,6 @@ public class Dot {
     public void setCenterX(int centerX) {
         this.centerX = centerX;
         this.listener.onDotChanged(this);
-
     }
 
     public int getCenterY() {
@@ -57,4 +63,11 @@ public class Dot {
         this.radius = radius;
     }
 
+    public int getColor() {
+        return color;
+    }
+
+    public void setColor(int color) {
+        this.color = color;
+    }
 }
