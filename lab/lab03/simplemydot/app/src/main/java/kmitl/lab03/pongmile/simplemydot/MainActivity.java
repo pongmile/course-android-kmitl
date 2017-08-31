@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity implements Dot.OnDotChangedL
         setContentView(R.layout.activity_main);
 
         dotview = (Dotview) findViewById(R.id.dotView);
-
         dot = new Dot(this, 0, 0, 30);
     }
 

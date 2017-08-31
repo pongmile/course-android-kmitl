@@ -23,6 +23,7 @@ public class Dotview extends View {
         if(this.dot != null){
             canvas.drawCircle(this.dot.getCenterX(), this.dot.getCenterY(), 30, paint);
         }
+        
     }
 
     public Dotview(Context context) {
@@ -46,5 +47,6 @@ public class Dotview extends View {
     }
 
     public void setDot(Dot dot) {
+        this.dot = dot;
     }
 }

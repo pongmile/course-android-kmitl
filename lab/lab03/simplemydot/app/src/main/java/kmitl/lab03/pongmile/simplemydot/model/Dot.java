@@ -36,6 +36,8 @@ public class Dot {
 
     public void setCenterX(int centerX) {
         this.centerX = centerX;
+        this.listener.onDotChanged(this);
+
     }
 
     public int getCenterY() {
@@ -44,6 +46,7 @@ public class Dot {
 
     public void setCenterY(int centerY) {
         this.centerY = centerY;
+        this.listener.onDotChanged(this);
     }
 
     public int getRadius() {
