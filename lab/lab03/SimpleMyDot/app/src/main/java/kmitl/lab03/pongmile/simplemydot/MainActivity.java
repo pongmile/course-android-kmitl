@@ -2,6 +2,7 @@ package kmitl.lab03.pongmile.simplemydot;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -23,11 +24,24 @@ public class MainActivity extends AppCompatActivity implements Dot.OnDotChangedL
         setContentView(R.layout.activity_main);
 
         Button btnOpenActivity = (Button) findViewById(R.id.btnOpenActivity);
+
+        final DotSerializable dotSerializable = new DotSerializable();
+        dotSerializable.setCenterX(150);
+        dotSerializable.setCenterY(150);
+        dotSerializable.setColor(Color.RED);
+        dotSerializable.setRadius(30);
+
+
+        final DotParcelable dotParcelable = new DotParcelable(150, 150, 0);
+
         btnOpenActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, SecondActivity.class);
                 intent.putExtra("xValue", 30);
+                intent.putExtra("dotSerializable", dotSerializable);
+
+                intent.putExtra("dotParcelable", dotParcelable);
                 startActivity(intent);
             }
         });

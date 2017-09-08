@@ -21,8 +21,21 @@ public class SecondActivity extends AppCompatActivity {
             }
         });
         TextView tvValueX = (TextView) findViewById(R.id.tvValueX);
+        TextView tvDot = (TextView) findViewById(R.id.tvDot);
 
         int x = getIntent().getIntExtra("xValue", 0);
+        DotSerializable dotSerializable = (DotSerializable) getIntent().getSerializableExtra("dotSerializable");
+
         tvValueX.setText(String.valueOf(x));
+
+        tvDot.setText("centerX : " + dotSerializable.getCenterX() +
+                    "\n centerY : " + dotSerializable.getCenterY() +
+                    "\n Radius : " + dotSerializable.getRadius());
+        tvDot.setTextColor(dotSerializable.getColor());
+
+        DotParcelable dotParcelable = (DotParcelable) getIntent().getParcelableExtra("dotParcelable");
+        tvDot.setText("CenterX : " + dotParcelable.getCenterX() +
+                "\n CenterY : " + dotParcelable.getCenterY() +
+                "\n Radius : " + dotParcelable.getRadius());
     }
 }
