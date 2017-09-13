@@ -79,4 +79,21 @@ public class Dotview extends View {
             dots.remove(dots.remove(dots.size() - 1));
         }
     }
+
+    public int findDot(int x, int y){
+        for (int i = 0; i < dots.size(); i++){
+            int centerX = dots.get(i).getCenterX();
+            int centerY = dots.get(i).getCenterY();
+            double distance = Math.sqrt(Math.pow(centerX - x, 2)) + Math.sqrt(Math.pow(centerY - y, 2));
+            if (distance <= dots.get(i).getRadius()){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public void removeDot(int i){
+        dots.remove(i);
+    }
+
 }

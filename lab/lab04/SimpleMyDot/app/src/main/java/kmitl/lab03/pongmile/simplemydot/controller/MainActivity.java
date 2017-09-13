@@ -2,6 +2,7 @@ package kmitl.lab03.pongmile.simplemydot.controller;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -9,6 +10,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Environment;
+import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -33,8 +35,9 @@ import kmitl.lab03.pongmile.simplemydot.view.Dotview;
 
 public class MainActivity extends AppCompatActivity implements Dot.OnDotChangedListener, Dotview.OnTouchListener{
 
+    final Context context = this;
     private Dotview dotview;
-
+    private int positionDot;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,6 +84,11 @@ public class MainActivity extends AppCompatActivity implements Dot.OnDotChangedL
         dotview.invalidate();
     }
 
+    @Override
+    public void onDotViewClicked(int x, int y) {
+
+    }
+
     private int randomColor() {
         Random rnd = new Random();
         return Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
@@ -110,7 +118,7 @@ public class MainActivity extends AppCompatActivity implements Dot.OnDotChangedL
             return true;
         }
     }
-    
+
     private Bitmap captureScreen() {
         View v = getWindow().getDecorView().getRootView();
         v.setDrawingCacheEnabled(true);
@@ -147,6 +155,5 @@ public class MainActivity extends AppCompatActivity implements Dot.OnDotChangedL
             shareScreen(uri);
         }
     }
-
 
 }

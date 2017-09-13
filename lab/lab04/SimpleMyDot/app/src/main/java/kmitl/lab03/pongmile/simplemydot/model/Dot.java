@@ -4,6 +4,8 @@ public class Dot {
 
     public interface OnDotChangedListener {
         void onDotChanged(Dot dot);
+
+        void onDotViewClicked(int x, int y);
     }
 
     private OnDotChangedListener listener;
@@ -22,7 +24,7 @@ public class Dot {
         this.listener.onDotChanged(this);
     }
 
-    public Dot(int centerX, int centerY, int radius) {
+    public Dot(int centerX, int centerY, int radius, int argb) {
         this.centerX = centerX;
         this.centerY = centerY;
         this.radius = radius;
