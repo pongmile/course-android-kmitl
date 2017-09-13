@@ -1,10 +1,14 @@
-package kmitl.lab03.pongmile.simplemydot;
+package kmitl.lab03.pongmile.simplemydot.controller;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import kmitl.lab03.pongmile.simplemydot.DotParcelable;
+import kmitl.lab03.pongmile.simplemydot.DotSerializable;
+import kmitl.lab03.pongmile.simplemydot.R;
 
 public class SecondActivity extends AppCompatActivity {
 

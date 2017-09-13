@@ -73,4 +73,10 @@ public class Dotview extends View {
     public void setOnTouchListener(OnTouchListener listener) {
         this.listener = listener;
     }
+
+    public void undo(){
+        if(!dots.isEmpty()) {
+            dots.remove(dots.remove(dots.size() - 1));
+        }
+    }
 }

@@ -1,7 +1,6 @@
-package kmitl.lab03.pongmile.simplemydot;
+package kmitl.lab03.pongmile.simplemydot.controller;
 
 import android.Manifest;
-import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -9,23 +8,21 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.net.Uri;
-import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.util.Random;
 
-import kmitl.lab03.pongmile.simplemydot.controller.Screenshot;
+import kmitl.lab03.pongmile.simplemydot.DotParcelable;
+import kmitl.lab03.pongmile.simplemydot.DotSerializable;
+import kmitl.lab03.pongmile.simplemydot.R;
 import kmitl.lab03.pongmile.simplemydot.model.Dot;
 import kmitl.lab03.pongmile.simplemydot.view.Dotview;
 
@@ -74,6 +71,11 @@ public class MainActivity extends AppCompatActivity implements Dot.OnDotChangedL
 
     public void onClearDots(View view) {
         dotview.clear();
+        dotview.invalidate();
+    }
+
+    public void onUndo(View view){
+        dotview.undo();
         dotview.invalidate();
     }
 

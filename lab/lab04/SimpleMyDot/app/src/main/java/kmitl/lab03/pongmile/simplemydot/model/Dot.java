@@ -1,10 +1,5 @@
 package kmitl.lab03.pongmile.simplemydot.model;
 
-import android.view.MotionEvent;
-import android.view.View;
-
-import kmitl.lab03.pongmile.simplemydot.MainActivity;
-
 public class Dot {
 
     public interface OnDotChangedListener {
