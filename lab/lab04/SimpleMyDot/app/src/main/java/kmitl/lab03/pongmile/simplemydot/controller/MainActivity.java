@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -18,6 +19,10 @@ import android.view.View;
 import android.widget.Button;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Random;
 
 import kmitl.lab03.pongmile.simplemydot.DotParcelable;
@@ -105,13 +110,26 @@ public class MainActivity extends AppCompatActivity implements Dot.OnDotChangedL
             return true;
         }
     }
+    
+    private Bitmap captureScreen() {
+        View v = getWindow().getDecorView().getRootView();
+        v.setDrawingCacheEnabled(true);
+        Bitmap bmp = Bitmap.createBitmap(v.getDrawingCache());
+        v.setDrawingCacheEnabled(false);
+        try {
+            FileOutputStream fos = new FileOutputStream(new File(Environment
+                    .getExternalStorageDirectory().toString(), "SCREEN"
+                    + System.currentTimeMillis() + ".png"));
+            bmp.compress(Bitmap.CompressFormat.PNG, 100, fos);
+            fos.flush();
+            fos.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-    private Bitmap screenShot() {
-        View root = this.dotview.getRootView();
-        Bitmap screenShot = Bitmap.createBitmap(root.getWidth(), root.getHeight(), Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(screenShot);
-        root.draw(canvas);
-        return screenShot;
+        return bmp;
     }
 
     public Uri imageUri(Context inContext, Bitmap inImage) {
@@ -124,8 +142,8 @@ public class MainActivity extends AppCompatActivity implements Dot.OnDotChangedL
 
     public void Sharescreen(View view){
         if(requestExternalStoragePermission()) {
-            Bitmap screenshot = screenShot();
-            Uri uri = imageUri(getApplicationContext(), screenshot);
+            Bitmap captureScreen = captureScreen();
+            Uri uri = imageUri(getApplicationContext(), captureScreen);
             shareScreen(uri);
         }
     }
