@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements Dot.OnDotChangedL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button btnOpenActivity = (Button) findViewById(R.id.btnOpenActivity);
+
 
         final DotSerializable dotSerializable = new DotSerializable();
         dotSerializable.setCenterX(150);
@@ -46,17 +46,7 @@ public class MainActivity extends AppCompatActivity implements Dot.OnDotChangedL
 
         final DotParcelable dotParcelable = new DotParcelable(150, 150, 0);
 
-        btnOpenActivity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-                intent.putExtra("xValue", 30);
-                intent.putExtra("dotSerializable", dotSerializable);
 
-                intent.putExtra("dot ", dotParcelable);
-                startActivity(intent);
-            }
-        });
 
         dotview = (Dotview) findViewById(R.id.dotView);
         dotview.setOnTouchListener((View.OnTouchListener) this);
@@ -97,6 +87,14 @@ public class MainActivity extends AppCompatActivity implements Dot.OnDotChangedL
         return false;
     }
 
+    private void shareScreen(Uri uri) {
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_SEND);
+        intent.putExtra(Intent.EXTRA_STREAM, uri);
+        intent.setType("image/*");
+        startActivity(Intent.createChooser(intent, "Share screenshot"));
+    }
+
     private boolean requestExternalStoragePermission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this,
@@ -118,18 +116,11 @@ public class MainActivity extends AppCompatActivity implements Dot.OnDotChangedL
 
     public Uri imageUri(Context inContext, Bitmap inImage) {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        inImage.compress(Bitmap.CompressFormat.PNG, 100, bytes);
         String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
         return Uri.parse(path);
     }
 
-    private void shareScreen(Uri uri) {
-        Intent intent = new Intent();
-        intent.setAction(Intent.ACTION_SEND);
-        intent.putExtra(Intent.EXTRA_STREAM, uri);
-        intent.setType("image/*");
-        startActivity(Intent.createChooser(intent, "Share screenshot"));
-    }
 
     public void Sharescreen(View view){
         if(requestExternalStoragePermission()) {
