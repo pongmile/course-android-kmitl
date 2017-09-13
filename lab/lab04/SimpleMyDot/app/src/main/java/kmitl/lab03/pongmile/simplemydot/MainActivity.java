@@ -95,51 +95,6 @@ public class MainActivity extends AppCompatActivity implements Dot.OnDotChangedL
         return false;
     }
 
-    /*
-
-    private Bitmap screenShot() {
-        View root = this.dotview.getRootView();
-        Bitmap screenShot = Bitmap.createBitmap(root.getWidth(), root.getHeight(), Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(screenShot);
-        root.draw(canvas);
-        return screenShot;
-    }
-
-    private void shareImage(File file){
-        Intent intent = new Intent();
-        intent.setAction(Intent.ACTION_SEND);
-        intent.setType("image/jpg");
-        intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file));
-        startActivity(Intent.createChooser(intent, "Share Screenshot"));
-    }
-
-    public void onCaptureScreen() {
-        Bitmap bitmap = Screenshot.getScreenShot(dotview);
-        File savePath = Screenshot.getMainDirectoryName(this);
-        File file = Screenshot.store(bitmap, "screenshot.jpg", savePath);
-        shareImage(file);
-    }
-
-    private boolean requestExternalStoragePermission() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                    100);
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-    public void onShare(View view){
-        if(requestExternalStoragePermission()) {
-            Bitmap screenshot = screenShot();
-            Uri uri = imageUri(getApplicationContext(), screenshot);
-            shareScreen(uri);
-        }
-    }
-    */
-
     private boolean requestExternalStoragePermission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this,
