@@ -9,8 +9,11 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
@@ -24,6 +27,7 @@ import java.io.IOException;
 import java.util.Random;
 
 import kmitl.lab03.pongmile.simplemydot.R;
+import kmitl.lab03.pongmile.simplemydot.fragment.MainFragment;
 import kmitl.lab03.pongmile.simplemydot.model.Dot;
 import kmitl.lab03.pongmile.simplemydot.view.Dotview;
 
@@ -38,10 +42,37 @@ public class MainActivity extends AppCompatActivity implements Dot.OnDotChangedL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if (savedInstanceState == null) {
+            initialFragment();
+        }
+        setStrictMode();
+
+
 
 
         dotview = (Dotview) findViewById(R.id.dotView);
-        dotview.setOnTouchListener(this);
+        dotview.setOnTouchListener((View.OnTouchListener) this);
+    }
+
+    private void setStrictMode() {
+        //Fix error when use Uri on Android Oreo
+        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+        StrictMode.setVmPolicy(builder.build());
+    }
+
+    private void initialFragment() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .add(R.id.fragmantContainer, MainFragment.newInstance(this))
+                .commit();
+    }
+
+    private void updateFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.fragmantContainer, fragment)
+                .addToBackStack(null)
+                .commit();
     }
 
     public void onRandomDot(View view) {
