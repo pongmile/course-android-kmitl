@@ -2,23 +2,19 @@ package kmitl.lab03.pongmile.simplemydot.controller;
 
 import android.Manifest;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.Canvas;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Environment;
-import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -27,8 +23,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Random;
 
-import kmitl.lab03.pongmile.simplemydot.DotParcelable;
-import kmitl.lab03.pongmile.simplemydot.DotSerializable;
 import kmitl.lab03.pongmile.simplemydot.R;
 import kmitl.lab03.pongmile.simplemydot.model.Dot;
 import kmitl.lab03.pongmile.simplemydot.view.Dotview;
@@ -38,21 +32,11 @@ public class MainActivity extends AppCompatActivity implements Dot.OnDotChangedL
     final Context context = this;
     private Dotview dotview;
     private int positionDot;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-
-        final DotSerializable dotSerializable = new DotSerializable();
-        dotSerializable.setCenterX(150);
-        dotSerializable.setCenterY(150);
-        dotSerializable.setColor(Color.RED);
-        dotSerializable.setRadius(30);
-
-
-        final DotParcelable dotParcelable = new DotParcelable(150, 150, 0);
 
 
 
