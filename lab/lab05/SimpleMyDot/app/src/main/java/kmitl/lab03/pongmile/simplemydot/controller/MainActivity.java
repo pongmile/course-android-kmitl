@@ -21,7 +21,6 @@ import kmitl.lab03.pongmile.simplemydot.model.Dot;
 
 public class MainActivity extends AppCompatActivity implements MainFragment.OnDotSelectListener, Editdot.EditListener {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,10 +37,7 @@ public class MainActivity extends AppCompatActivity implements MainFragment.OnDo
 
     private void viewFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.fragmantContainer, fragment)
-                .addToBackStack(null)
-                .commit();
+        fragmentManager.beginTransaction().replace(R.id.fragmantContainer, fragment).addToBackStack(null).commit();
     }
 
     @Override

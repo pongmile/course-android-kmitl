@@ -10,7 +10,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -20,28 +19,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.graphics.Bitmap;
-import android.os.Environment;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.Random;
 
 import kmitl.lab03.pongmile.simplemydot.R;
-import kmitl.lab03.pongmile.simplemydot.controller.MainActivity;
 import kmitl.lab03.pongmile.simplemydot.model.Dot;
 import kmitl.lab03.pongmile.simplemydot.model.Dots;
 import kmitl.lab03.pongmile.simplemydot.view.Dotview;
@@ -67,7 +49,7 @@ public class MainFragment extends Fragment implements Dots.OnDotsChangedListener
     }
 
     public MainFragment() {
-        // Required empty public constructor
+
     }
 
     public static MainFragment newInstance() {
@@ -100,13 +82,34 @@ public class MainFragment extends Fragment implements Dots.OnDotsChangedListener
     }
 
     public void createDot(int centerX, int centerY) {
-        Random rd = new Random();
-        int color = Color.argb(100 + rd.nextInt(155), rd.nextInt(255), rd.nextInt(255), rd.nextInt(255));
-        int radius = 20 + rd.nextInt(80);
-        dot = new Dot(centerX, centerY, radius, color);
+        dot = new Dot(centerX, centerY, 60, randomColor(), this);
         dotlist.addDot(dot);
     }
 
+    private int randomColor() {
+        Random rnd = new Random();
+        return Color.argb(255, rnd.nextInt(255), rnd.nextInt(255), rnd.nextInt(255));
+    }
+
+
+    public void onDotViewPressed(int x, int y) {
+        int result = dotlist.checkdot(x, y);
+        if (result == -1) {
+            createDot(x, y);
+        } else {
+            dotlist.removeDot(result);
+        }
+    }
+
+    @Override
+    public void onDotViewLongPressed(int x, int y) {
+        int result = dotlist.checkdot(x, y);
+        if (result == -1) {
+            createDot(x, y);
+        } else {
+            selectListener.onDotSelect(dotlist.getDots().get(result));
+        }
+    }
 
     private boolean requestExternalStoragePermission() {
         if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
@@ -143,39 +146,18 @@ public class MainFragment extends Fragment implements Dots.OnDotsChangedListener
         startActivity(Intent.createChooser(intent, "Share screenshot"));
     }
 
-
-    public void onDotViewPressed(int x, int y) {
-        int result = dotlist.checkdot(x, y);
-        if (result == -1) {
-            createDot(x, y);
-        } else {
-            dotlist.removeDot(result);
-        }
-    }
-
-    @Override
-    public void onDotViewLongPressed(int x, int y) {
-        int result = dotlist.checkdot(x, y);
-        if (result == -1) {
-            createDot(x, y);
-        } else {
-            selectListener.onDotSelect(dotlist.getDots().get(result));
-        }
-    }
-
-
     private void initSetup(View rootView) {
         dotView = rootView.findViewById(R.id.dotView);
-        dotView.setOnDotViewPressListener(this);
-        Button btnRandom = rootView.findViewById(R.id.randomDot);
-        Button btnClear = rootView.findViewById(R.id.clearDot);
-        Button btnUndo = rootView.findViewById(R.id.Undo);
-        Button btnShare = rootView.findViewById(R.id.share);
+        Button ButtonRandom = rootView.findViewById(R.id.randomDot);
+        Button ButtonClear = rootView.findViewById(R.id.clearDot);
+        Button ButtonUndo = rootView.findViewById(R.id.Undo);
+        Button ButtonShare = rootView.findViewById(R.id.share);
 
-        btnRandom.setOnClickListener(this);
-        btnClear.setOnClickListener(this);
-        btnUndo.setOnClickListener(this);
-        btnShare.setOnClickListener(this);
+        dotView.setOnDotViewPressListener(this);
+        ButtonRandom.setOnClickListener(this);
+        ButtonClear.setOnClickListener(this);
+        ButtonUndo.setOnClickListener(this);
+        ButtonShare.setOnClickListener(this);
     }
 
     @Override
@@ -185,12 +167,12 @@ public class MainFragment extends Fragment implements Dots.OnDotsChangedListener
     }
 
     public void onRandomDot() {
-        Random rd = new Random();
-        int centerX = rd.nextInt(dotView.getWidth());
-        int centerY = rd.nextInt(dotView.getHeight());
-        createDot(centerX, centerY);
+        Random random = new Random();
+        int centerX = random.nextInt(dotView.getWidth());
+        int centerY = random.nextInt(dotView.getHeight());
+        dot = new Dot(centerX, centerY, 30, randomColor(), this);
+        dotlist.addDot(dot);
     }
-
 
     public void onClearDot() {
         dotlist.clearDot();
@@ -203,7 +185,6 @@ public class MainFragment extends Fragment implements Dots.OnDotsChangedListener
     }
 
     public void onShare() {
-
         if (requestExternalStoragePermission()) {
             Bitmap screenshot = captureScreen();
             Uri uri = imageUri(getContext(), screenshot);

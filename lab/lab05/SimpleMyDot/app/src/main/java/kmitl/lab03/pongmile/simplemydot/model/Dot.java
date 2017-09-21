@@ -3,6 +3,8 @@ package kmitl.lab03.pongmile.simplemydot.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import kmitl.lab03.pongmile.simplemydot.fragment.MainFragment;
+
 public class Dot implements Parcelable {
 
     private int centerX;
@@ -10,7 +12,7 @@ public class Dot implements Parcelable {
     private int radius;
     private int color;
 
-    public Dot(int centerX, int centerY, int radius, int color) {
+    public Dot(int centerX, int centerY, int radius, int color, MainFragment mainFragment) {
         this.centerX = centerX;
         this.centerY = centerY;
         this.radius = radius;
