@@ -1,37 +1,20 @@
 package kmitl.lab03.pongmile.simplemydot.model;
 
-public class Dot {
+import android.os.Parcel;
+import android.os.Parcelable;
 
-    public interface OnDotChangedListener {
-        void onDotChanged(Dot dot);
+public class Dot implements Parcelable {
 
-        void onDotViewClicked(int x, int y);
-    }
-
-    private OnDotChangedListener listener;
     private int centerX;
     private int centerY;
     private int radius;
     private int color;
 
-    public Dot(int centerX, int centerY, int radius, int color, OnDotChangedListener listener) {
-        this.listener = listener;
+    public Dot(int centerX, int centerY, int radius, int color) {
         this.centerX = centerX;
         this.centerY = centerY;
         this.radius = radius;
         this.color = color;
-
-        this.listener.onDotChanged(this);
-    }
-
-    public Dot(int centerX, int centerY, int radius, int argb) {
-        this.centerX = centerX;
-        this.centerY = centerY;
-        this.radius = radius;
-    }
-
-    public void setListener(OnDotChangedListener listener) {
-        this.listener = listener;
     }
 
     public int getCenterX() {
@@ -40,7 +23,6 @@ public class Dot {
 
     public void setCenterX(int centerX) {
         this.centerX = centerX;
-        this.listener.onDotChanged(this);
     }
 
     public int getCenterY() {
@@ -49,7 +31,6 @@ public class Dot {
 
     public void setCenterY(int centerY) {
         this.centerY = centerY;
-        this.listener.onDotChanged(this);
     }
 
     public int getRadius() {
@@ -67,4 +48,39 @@ public class Dot {
     public void setColor(int color) {
         this.color = color;
     }
+
+    protected Dot(Parcel in) {
+        centerX = in.readInt();
+        centerY = in.readInt();
+        radius = in.readInt();
+        color = in.readInt();
+    }
+
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(centerX);
+        parcel.writeInt(centerY);
+        parcel.writeInt(radius);
+        parcel.writeInt(color);
+    }
+
+    public static final Creator<Dot> CREATOR = new Creator<Dot>() {
+        @Override
+        public Dot createFromParcel(Parcel in) {
+            return new Dot(in);
+        }
+
+        @Override
+        public Dot[] newArray(int size) {
+            return new Dot[size];
+        }
+    };
+
+
 }
