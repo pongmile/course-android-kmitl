@@ -1,0 +1,7 @@
+#Fri Sep 15 11:07:48 ICT 2017
+base.0=/Users/pongmile/course-android-kmitl/lab/lab05/MyApplication/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_52b6475be585154277fe5a0c18cbc59d3ee83e6b
+renamed.1=classes2.dex
+renamed.0=classes.dex
+file.1=/Users/pongmile/course-android-kmitl/lab/lab05/MyApplication/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_98c791a61ee4c8020de13288fdcca2e0c60e4486/classes.dex
+base.1=/Users/pongmile/course-android-kmitl/lab/lab05/MyApplication/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_98c791a61ee4c8020de13288fdcca2e0c60e4486
+file.0=/Users/pongmile/course-android-kmitl/lab/lab05/MyApplication/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_52b6475be585154277fe5a0c18cbc59d3ee83e6b/classes.dex

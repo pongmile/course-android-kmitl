@@ -1,0 +1,46 @@
+[
+    {
+        "merged": "/Users/pongmile/course-android-kmitl/lab/lab05/MyApplication/app/build/intermediates/res/merged/debug/color/abc_secondary_text_material_light.xml",
+        "source": "/Users/pongmile/.android/build-cache/36bbe881d7e986dc3994e08c6e274c49b62c6c51/output/res/color/abc_secondary_text_material_light.xml"
+    },
+    {
+        "merged": "/Users/pongmile/course-android-kmitl/lab/lab05/MyApplication/app/build/intermediates/res/merged/debug/color/abc_primary_text_disable_only_material_light.xml",
+        "source": "/Users/pongmile/.android/build-cache/36bbe881d7e986dc3994e08c6e274c49b62c6c51/output/res/color/abc_primary_text_disable_only_material_light.xml"
+    },
+    {
+        "merged": "/Users/pongmile/course-android-kmitl/lab/lab05/MyApplication/app/build/intermediates/res/merged/debug/color/abc_primary_text_material_light.xml",
+        "source": "/Users/pongmile/.android/build-cache/36bbe881d7e986dc3994e08c6e274c49b62c6c51/output/res/color/abc_primary_text_material_light.xml"
+    },
+    {
+        "merged": "/Users/pongmile/course-android-kmitl/lab/lab05/MyApplication/app/build/intermediates/res/merged/debug/color/abc_secondary_text_material_dark.xml",
+        "source": "/Users/pongmile/.android/build-cache/36bbe881d7e986dc3994e08c6e274c49b62c6c51/output/res/color/abc_secondary_text_material_dark.xml"
+    },
+    {
+        "merged": "/Users/pongmile/course-android-kmitl/lab/lab05/MyApplication/app/build/intermediates/res/merged/debug/color/abc_hint_foreground_material_dark.xml",
+        "source": "/Users/pongmile/.android/build-cache/36bbe881d7e986dc3994e08c6e274c49b62c6c51/output/res/color/abc_hint_foreground_material_dark.xml"
+    },
+    {
+        "merged": "/Users/pongmile/course-android-kmitl/lab/lab05/MyApplication/app/build/intermediates/res/merged/debug/color/switch_thumb_material_dark.xml",
+        "source": "/Users/pongmile/.android/build-cache/36bbe881d7e986dc3994e08c6e274c49b62c6c51/output/res/color/switch_thumb_material_dark.xml"
+    },
+    {
+        "merged": "/Users/pongmile/course-android-kmitl/lab/lab05/MyApplication/app/build/intermediates/res/merged/debug/color/abc_hint_foreground_material_light.xml",
+        "source": "/Users/pongmile/.android/build-cache/36bbe881d7e986dc3994e08c6e274c49b62c6c51/output/res/color/abc_hint_foreground_material_light.xml"
+    },
+    {
+        "merged": "/Users/pongmile/course-android-kmitl/lab/lab05/MyApplication/app/build/intermediates/res/merged/debug/color/abc_primary_text_disable_only_material_dark.xml",
+        "source": "/Users/pongmile/.android/build-cache/36bbe881d7e986dc3994e08c6e274c49b62c6c51/output/res/color/abc_primary_text_disable_only_material_dark.xml"
+    },
+    {
+        "merged": "/Users/pongmile/course-android-kmitl/lab/lab05/MyApplication/app/build/intermediates/res/merged/debug/color/abc_primary_text_material_dark.xml",
+        "source": "/Users/pongmile/.android/build-cache/36bbe881d7e986dc3994e08c6e274c49b62c6c51/output/res/color/abc_primary_text_material_dark.xml"
+    },
+    {
+        "merged": "/Users/pongmile/course-android-kmitl/lab/lab05/MyApplication/app/build/intermediates/res/merged/debug/color/switch_thumb_material_light.xml",
+        "source": "/Users/pongmile/.android/build-cache/36bbe881d7e986dc3994e08c6e274c49b62c6c51/output/res/color/switch_thumb_material_light.xml"
+    },
+    {
+        "merged": "/Users/pongmile/course-android-kmitl/lab/lab05/MyApplication/app/build/intermediates/res/merged/debug/color/abc_search_url_text.xml",
+        "source": "/Users/pongmile/.android/build-cache/36bbe881d7e986dc3994e08c6e274c49b62c6c51/output/res/color/abc_search_url_text.xml"
+    }
+]

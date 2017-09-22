@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/pongmile/course-android-kmitl/lab/lab05/MyApplication/app/build/intermediates/res/merged/debug/mipmap-mdpi/ic_launcher_round.png",
+        "source": "/Users/pongmile/course-android-kmitl/lab/lab05/MyApplication/app/src/main/res/mipmap-mdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/pongmile/course-android-kmitl/lab/lab05/MyApplication/app/build/intermediates/res/merged/debug/mipmap-mdpi/ic_launcher.png",
+        "source": "/Users/pongmile/course-android-kmitl/lab/lab05/MyApplication/app/src/main/res/mipmap-mdpi/ic_launcher.png"
+    }
+]

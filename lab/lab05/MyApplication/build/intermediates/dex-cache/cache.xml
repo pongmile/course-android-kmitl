@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/pongmile/course-android-kmitl/lab/lab05/MyApplication/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="d0eb58905620dbbde816cf7064e6443dc7d770f8">
+        <dex dex="/Users/pongmile/course-android-kmitl/lab/lab05/MyApplication/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_98c791a61ee4c8020de13288fdcca2e0c60e4486/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/pongmile/course-android-kmitl/lab/lab05/MyApplication/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="/Users/pongmile/course-android-kmitl/lab/lab05/MyApplication/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_52b6475be585154277fe5a0c18cbc59d3ee83e6b/classes.dex" />
+    </item>
+
+</items>

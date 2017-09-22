@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/pongmile/course-android-kmitl/lab/lab05/MyApplication/app/build/intermediates/res/merged/debug/color-v11/abc_background_cache_hint_selector_material_light.xml",
+        "source": "/Users/pongmile/.android/build-cache/36bbe881d7e986dc3994e08c6e274c49b62c6c51/output/res/color-v11/abc_background_cache_hint_selector_material_light.xml"
+    },
+    {
+        "merged": "/Users/pongmile/course-android-kmitl/lab/lab05/MyApplication/app/build/intermediates/res/merged/debug/color-v11/abc_background_cache_hint_selector_material_dark.xml",
+        "source": "/Users/pongmile/.android/build-cache/36bbe881d7e986dc3994e08c6e274c49b62c6c51/output/res/color-v11/abc_background_cache_hint_selector_material_dark.xml"
+    }
+]
