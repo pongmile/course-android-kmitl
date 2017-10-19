@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/pongmile/.gradle/caches/modules-2/files-2.1/com.github.bumptech.glide/glide/4.1.1/5cf10dddd902443677b1614579f1183f952f3666/glide-4.1.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="5cf10dddd902443677b1614579f1183f952f3666">
+        <dex dex="/Users/pongmile/Lazyinstagram/app/build/intermediates/transforms/dex/debug/folders/1000/10/glide-4.1.1_5592b6149fbe9a5001fb27923d1eb3ccf0e24036/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/pongmile/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.8.0/5a11f020cce2d11eb71ba916700600e18c4547e7/okhttp-3.8.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="5a11f020cce2d11eb71ba916700600e18c4547e7">
+        <dex dex="/Users/pongmile/Lazyinstagram/app/build/intermediates/transforms/dex/debug/folders/1000/10/okhttp-3.8.0_847c50385a2b6f8d9e0202af0587f8e94afc7e61/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/pongmile/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/retrofit/2.3.0/bcacde6a8ccedcc56c127403d26b76072fe6214d/retrofit-2.3.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="bcacde6a8ccedcc56c127403d26b76072fe6214d">
+        <dex dex="/Users/pongmile/Lazyinstagram/app/build/intermediates/transforms/dex/debug/folders/1000/10/retrofit-2.3.0_8ac9618a31738321890a42ffca52660cad981cad/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/pongmile/.android/build-cache/0468def3a534e10b777802b542ae2315d8768a27/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="b62fdc4cfef174c1e456014195c83fa7de7dc041">
+        <dex dex="/Users/pongmile/Lazyinstagram/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_9f25fa99fa8da49af1953d7570f225272b6ed8cc/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/pongmile/.android/build-cache/5230984e464a2d7d7ea20cb47a3ba176128fc523/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="6f4138a4e065826cb044d49faea4cfd7191773d1">
+        <dex dex="/Users/pongmile/Lazyinstagram/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_7abe5e2e189e9df1f616a313602d2259539be270/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/pongmile/.android/build-cache/3327e4c953da8a281ea56a1b61ee1fb2883757fe/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="b12cd9c87c3dfb012a911b6e38d2444ed0a65e1f">
+        <dex dex="/Users/pongmile/Lazyinstagram/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_ad774c651e55c25eea8bda0dadbf0b98ab8f75a2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/pongmile/.gradle/caches/modules-2/files-2.1/com.github.bumptech.glide/disklrucache/4.1.1/d02b9bad9380a7f98248e58ec9df65023226259e/disklrucache-4.1.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="d02b9bad9380a7f98248e58ec9df65023226259e">
+        <dex dex="/Users/pongmile/Lazyinstagram/app/build/intermediates/transforms/dex/debug/folders/1000/10/disklrucache-4.1.1_513822582bbeb435d25c464f9700e53545aed2f0/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/pongmile/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/converter-gson/2.3.0/9e09011e9767bb76b5e27c9b8223476b93b14631/converter-gson-2.3.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="9e09011e9767bb76b5e27c9b8223476b93b14631">
+        <dex dex="/Users/pongmile/Lazyinstagram/app/build/intermediates/transforms/dex/debug/folders/1000/10/converter-gson-2.3.0_3914c3f4c044ee95da5618cf9c3f0c06fc4135ea/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/pongmile/.gradle/caches/modules-2/files-2.1/android.arch.core/common/1.0.0/a2d487452376193fc8c103dd2b9bd5f2b1b44563/common-1.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="a2d487452376193fc8c103dd2b9bd5f2b1b44563">
+        <dex dex="/Users/pongmile/Lazyinstagram/app/build/intermediates/transforms/dex/debug/folders/1000/10/common-1.0.0_ecb8a1b9c9576a10c9f35ab7305c7cae41e712af/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/pongmile/.android/build-cache/701cb2b05bf676225eeba3223f80968acf665e57/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="f428e2fbc9ed0b297e3a3f420e51e6982f66822d">
+        <dex dex="/Users/pongmile/Lazyinstagram/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_6f77ecc2958567d5f9c1f6b755e2ce48f8984701/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/pongmile/Lazyinstagram/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="4cf9099ba88b0e7ee666e8ab0e0b11795bf2ff47">
+        <dex dex="/Users/pongmile/Lazyinstagram/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_88b804e6f6421f50e0da5e3992073bd30e7aa5d0/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/pongmile/.android/build-cache/8f3f12c8e741a4466e9426e0734e431867708f5d/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="2442771a5590dd4eb4bce00c2e9dca9e22e4c963">
+        <dex dex="/Users/pongmile/Lazyinstagram/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_00a270caa03bf8904c194102d2c8ad875b681067/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/pongmile/.gradle/caches/modules-2/files-2.1/android.arch.lifecycle/common/1.0.0/e414a4cb28434e25c4f6aa71426eb20cf4874ae9/common-1.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="e414a4cb28434e25c4f6aa71426eb20cf4874ae9">
+        <dex dex="/Users/pongmile/Lazyinstagram/app/build/intermediates/transforms/dex/debug/folders/1000/10/common-1.0.0_73883898ca2bfcc00ae8b624b3f63ca66b5cdd61/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/pongmile/.android/build-cache/3700a451e1f22b9b1aee6b5b058ced317459478a/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="233f60a165ae622c8b36731502ebbda0f65e1930">
+        <dex dex="/Users/pongmile/Lazyinstagram/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_8b44eb2d7e2ef66fa1fd6a1098ce2bc15bcc5db3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/pongmile/.gradle/caches/modules-2/files-2.1/com.android.support/support-annotations/26.1.0/814258103cf26a15fcc26ecce35f5b7d24b73f8/support-annotations-26.1.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="0814258103cf26a15fcc26ecce35f5b7d24b73f8">
+        <dex dex="/Users/pongmile/Lazyinstagram/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-26.1.0_19a8d8d10279613cc2c8ac45ecfdfe7fee3986e6/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/pongmile/.android/build-cache/14cbcc1448d2bbfcddba803ce5ae0103161bc335/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="f97cf85b0fe70d37a705111dafa6b1b418ea1650">
+        <dex dex="/Users/pongmile/Lazyinstagram/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_5611b52c5273b0256701a82de26f10a085b9bf42/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/pongmile/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.13.0/a9283170b7305c8d92d25aff02a6ab7e45d06cbe/okio-1.13.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="a9283170b7305c8d92d25aff02a6ab7e45d06cbe">
+        <dex dex="/Users/pongmile/Lazyinstagram/app/build/intermediates/transforms/dex/debug/folders/1000/10/okio-1.13.0_c57f17453fc3cb088fb6f916c15fc2bcc0bc3c9e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/pongmile/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/converter-scalars/2.3.0/1eaa5762cb25c31b1905e2bfdfef70a2e0495ea6/converter-scalars-2.3.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="1eaa5762cb25c31b1905e2bfdfef70a2e0495ea6">
+        <dex dex="/Users/pongmile/Lazyinstagram/app/build/intermediates/transforms/dex/debug/folders/1000/10/converter-scalars-2.3.0_bcb87440199f3000ac64cb4b2ac646b0e04343f6/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/pongmile/.android/build-cache/b9fbbcba6601fdd62d6e57b65ff4a59321c88bc2/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="508f50705b4fde51a16259f29c854201a3044516">
+        <dex dex="/Users/pongmile/Lazyinstagram/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_ceccdf0fefb2fd608d80b0b084e0b70faa04524c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/pongmile/Lazyinstagram/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="/Users/pongmile/Lazyinstagram/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_100379f00a9c215993b4f78864620440d5c176f1/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/pongmile/.android/build-cache/2c8e76c7bd48ede6ec10385e0fc8b7e71fbb9c08/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/pongmile/Lazyinstagram/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_6c763fce1af3e39c775943f60a2fbdbe79d37785/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/pongmile/.android/build-cache/cf0630fe6c2bf28e0448a0444cddcf182698e62c/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="40392f30a601db5675cdf18192aab013d6fee6ec">
+        <dex dex="/Users/pongmile/Lazyinstagram/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_724bcf6621b91d41a2a6a54a7c208334ef28e9ba/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/pongmile/.gradle/caches/modules-2/files-2.1/com.github.bumptech.glide/annotations/4.1.1/e336eaee0493d7a441c8e7adbaf38d1d78e58596/annotations-4.1.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="e336eaee0493d7a441c8e7adbaf38d1d78e58596">
+        <dex dex="/Users/pongmile/Lazyinstagram/app/build/intermediates/transforms/dex/debug/folders/1000/10/annotations-4.1.1_4cbf9abc376a515456121cdc892ad0ef566a7d28/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/pongmile/.android/build-cache/e8982515fd9f2d4b2171f3a41cbfaa69a6934e61/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="7efef32744ca4a436492d5cf28c08698cc2af256">
+        <dex dex="/Users/pongmile/Lazyinstagram/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_3ac48ae97d4d1744ed6e2d53c3a7544f0b7dcc4e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/pongmile/.gradle/caches/modules-2/files-2.1/com.github.bumptech.glide/gifdecoder/4.1.1/df97c1211882e43d08911e0b82eb6e1b25b3d311/gifdecoder-4.1.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="df97c1211882e43d08911e0b82eb6e1b25b3d311">
+        <dex dex="/Users/pongmile/Lazyinstagram/app/build/intermediates/transforms/dex/debug/folders/1000/10/gifdecoder-4.1.1_8b6b65d4bde557732a88d5991485b32cc0c76eaa/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/pongmile/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.8.1/2a8e0aa38a2e21cb39e2f5a7d6704cbdc941da0/gson-2.8.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="02a8e0aa38a2e21cb39e2f5a7d6704cbdc941da0">
+        <dex dex="/Users/pongmile/Lazyinstagram/app/build/intermediates/transforms/dex/debug/folders/1000/10/gson-2.8.1_1d460ae707a7417854818763a7bc9331cb50bce9/classes.dex" />
+    </item>
+
+</items>
