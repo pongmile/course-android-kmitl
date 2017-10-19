@@ -41,17 +41,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     String userName;
     private UserProfile userProfile;
 
+    private String getUsername() {
+        userName = getIntent().getStringExtra("name");
+
+        if (userName == null){
+            userName = "android";
+        }
+
+        return userName;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        userName = getIntent().getStringExtra("name");
 
-        if (userName == null){
-            userName = "cartoon";
-        }
-
+        userName = getUsername();
         getUserProfile(userName);
 
         userSelect = findViewById(R.id.userSelect);
@@ -59,6 +65,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ImageButton imageSingle = findViewById(R.id.imageSingle);
         ImageButton imageMulti = findViewById(R.id.imageMulti);
         list = findViewById(R.id.list);
+
         Toast.makeText(this, userName, Toast.LENGTH_SHORT).show();
         userSelect.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -83,6 +90,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String[] names = {"android", "cartoon", "nature"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_spinner_item, names);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
         userSelect.setAdapter(adapter);
         userSelect.setSelection(getUserNameNumber(userName));
 
@@ -104,45 +112,73 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonFollow.setOnClickListener(this);
 
     }
+
+    private AlertDialog createLoadingDialog() {
+        ProgressBar bar = new ProgressBar(this);
+        AlertDialog dialog = new AlertDialog.Builder(this).setView(bar).create();
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        return dialog;
+    }
+
+    private void updateFollowButton(UserProfile userProfile) {
+        Button buttonFollow = findViewById(R.id.buttonFollow);
+        buttonFollow.setText(userProfile.isFollow() ? "Following" : "Follow");
+        buttonFollow.setBackgroundColor(userProfile.isFollow() ? Color.parseColor("#375FBF") : Color.parseColor("#f2f2f2"));
+    }
+
     private void onClickFollow(){
+        final AlertDialog loadingDialog = createLoadingDialog();
+        loadingDialog.show();
 
         FollowReq request = new FollowReq();
         request.setUser(userName);
         request.setFollow(!userProfile.isFollow());
 
         OkHttpClient client = new OkHttpClient.Builder().build();
-
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(LazyIgapi.BASE_URL)
-                .client(client)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(LazyIgapi.BASE_URL).client(client)
+                .addConverterFactory(GsonConverterFactory.create()).build();
 
         LazyIgapi lazyInstragramApi = retrofit.create(LazyIgapi.class);
         Call<FollowResp> call = lazyInstragramApi.follow(request);
         call.enqueue(new Callback<FollowResp>() {
+
             @Override
             public void onResponse(Call<FollowResp> call, Response<FollowResp> response) {
+                loadingDialog.dismiss();
                 if (response.isSuccessful()) {
                     userProfile.setFollow(!userProfile.isFollow());
                     updateFollowButton(userProfile);
+                    Toast.makeText(MainActivity.this, "successful", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(MainActivity.this, "failed", Toast.LENGTH_SHORT).show();
                 }
+
             }
 
             @Override
             public void onFailure(Call<FollowResp> call, Throwable t) {
-
+                loadingDialog.dismiss();
+                Toast.makeText(MainActivity.this, "Can't doing", Toast.LENGTH_SHORT).show();
             }
-
         });
 
     }
 
-    private void updateFollowButton(UserProfile userProfile) {
-        Button buttonFollow = findViewById(R.id.buttonFollow);
-        buttonFollow.setText(userProfile.isFollow() ? "Followed" : "Follow");
-        buttonFollow.setBackgroundColor(userProfile.isFollow() ? Color.parseColor("#F2594B") : Color.parseColor("#375FBF"));
+    private void userActivity(UserProfile userProfile) {
+        ImageView imageProfile = findViewById(R.id.imageProfile);
+        TextView textPost = findViewById(R.id.valuepost);
+        TextView textFollowing = findViewById(R.id.valuefollowing);
+        TextView textFollower = findViewById(R.id.valuefollower);
+        TextView textBio = findViewById(R.id.textBio);
+
+        Glide.with(MainActivity.this).load(userProfile.getUrlProfile())
+                .into(imageProfile);
+        textPost.setText(String.valueOf(userProfile.getPost()));
+        textFollowing.setText(String.valueOf(userProfile.getFollowing()));
+        textFollower.setText(String.valueOf(userProfile.getFollower()));
+        textBio.setText(String.valueOf(userProfile.getBio()));
     }
+
 
     private void getUserProfile(String usrName) {
         OkHttpClient client = new OkHttpClient.Builder().build();
@@ -159,21 +195,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (response.isSuccessful()) {
                     userProfile = response.body();
 
-                    ImageView imageProfile = findViewById(R.id.imageProfile);
-                    Glide.with(MainActivity.this).load(userProfile.getUrlProfile())
-                            .into(imageProfile);
-
-                    TextView textPost = findViewById(R.id.valuepost);
-                    textPost.setText(String.valueOf(userProfile.getPost()));
-
-                    TextView textFollowing = findViewById(R.id.valuepost);
-                    textFollowing.setText(String.valueOf(userProfile.getFollowing()));
-
-                    TextView textFollower = findViewById(R.id.valuefollower);
-                    textFollower.setText(String.valueOf(userProfile.getFollower()));
-
-                    TextView textBio = findViewById(R.id.textBio);
-                    textBio.setText(String.valueOf(userProfile.getBio()));
+                    userActivity(userProfile);
 
                     PostAdapter postAdapter = new PostAdapter(MainActivity.this, userProfile.getPosts());
                     list.setLayoutManager(new GridLayoutManager(MainActivity.this, 3));
