@@ -48,17 +48,17 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Following"
         app:layout_constraintBottom_toTopOf="@+id/textBio"
-        app:layout_constraintHorizontal_bias="0.45"
-        app:layout_constraintLeft_toRightOf="@+id/textFollowing"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.742" />
+        app:layout_constraintVertical_bias="0.752"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="@+id/textFollowing"
+        app:layout_constraintHorizontal_bias="0.671" />
 
     <TextView
         android:id="@+id/textBio"
@@ -81,7 +81,7 @@
         android:id="@+id/buttonFollow"
         android:layout_width="185dp"
         android:layout_height="38dp"
-        android:layout_marginBottom="0dp"
+        android:layout_marginBottom="7dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
@@ -143,7 +143,7 @@
         android:id="@+id/userSelect"
         android:layout_width="205dp"
         android:layout_height="24dp"
-        android:layout_marginBottom="-1dp"
+        android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toTopOf="@+id/buttonFollow"
         app:layout_constraintLeft_toRightOf="@+id/imageProfile"
         android:layout_marginLeft="8dp"
@@ -161,8 +161,8 @@
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/textBio"
         app:layout_constraintVertical_bias="0.0"
-        app:layout_constraintLeft_toRightOf="@+id/valuefollowing"
-        android:layout_marginLeft="54dp" />
+        android:layout_marginLeft="0dp"
+        app:layout_constraintLeft_toLeftOf="@+id/textFollowing" />
 
     <TextView
         android:id="@+id/valuefollower"
@@ -174,8 +174,8 @@
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/textBio"
         app:layout_constraintVertical_bias="0.0"
-        app:layout_constraintLeft_toRightOf="@+id/valuepost"
-        android:layout_marginLeft="82dp" />
+        android:layout_marginLeft="0dp"
+        app:layout_constraintLeft_toLeftOf="@+id/textFollower" />
 
     <TextView
         android:id="@+id/valuefollowing"
@@ -187,8 +187,8 @@
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/textBio"
         app:layout_constraintVertical_bias="0.0"
-        android:layout_marginLeft="105dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        android:layout_marginLeft="0dp"
+        app:layout_constraintLeft_toLeftOf="@+id/textPost" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/list"
