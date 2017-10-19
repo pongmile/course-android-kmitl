@@ -6,38 +6,38 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
-import kmitl.lab05.pongmile.lazyinstagram.R;
+import java.util.List;
 
-/**
- * Created by pongmile on 10/6/17.
- */
+import kmitl.lab05.pongmile.lazyinstagram.R;
+import kmitl.lab05.pongmile.lazyinstagram.model.UserPost;
+
 
 class Holder extends RecyclerView.ViewHolder {
+
     public ImageView image;
+    public TextView textLike;
+    public TextView textComment;
 
     public Holder(View itemView) {
         super(itemView);
         image = itemView.findViewById(R.id.image);
+        textLike = itemView.findViewById(R.id.textLike);
+        textComment = itemView.findViewById(R.id.textComment);
     }
 }
 
-public class PostAdapter
-        extends RecyclerView.Adapter<Holder> {
-
-    String[] data = {
-            "https://raw.githubusercontent.com/iangkub/gitdemo/master/cartoon/01.jpg",
-                    "https://raw.githubusercontent.com/iangkub/gitdemo/master/cartoon/02.jpg",
-                    "https://raw.githubusercontent.com/iangkub/gitdemo/master/cartoon/03.jpg",
-                    "https://raw.githubusercontent.com/iangkub/gitdemo/master/cartoon/04.jpg"
-    };
+public class PostAdapter extends RecyclerView.Adapter<Holder> {
 
     public Context context;
+    private List<UserPost> posts;
 
-    public PostAdapter(Context context) {
+    public PostAdapter(Context context, List<UserPost> posts) {
         this.context = context;
+        this.posts = posts;
     }
 
 
@@ -46,7 +46,6 @@ public class PostAdapter
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
 
         View itemView = inflater.inflate(R.layout.post_item, null, false);
-
         Holder holder = new Holder(itemView);
         return holder;
     }
@@ -55,11 +54,17 @@ public class PostAdapter
     @Override
     public void onBindViewHolder(Holder holder, int position) {
         ImageView image = holder.image;
-        Glide.with(context).load(data[position]).into(image);
+        Glide.with(context).load(posts.get(position).getUrl()).into(image);
+
+        TextView textViewLike = holder.textLike;
+        textViewLike.setText(String.valueOf(posts.get(position).getLike()));
+
+        TextView textViewComment = holder.textComment;
+        textViewComment.setText(String.valueOf(posts.get(position).getComment()));
     }
 
     @Override
     public int getItemCount() {
-        return data.length;
+        return posts.size();
     }
 }
