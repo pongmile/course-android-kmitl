@@ -1,182 +1,147 @@
 package com.pongmile.moneyflow;
 
-import android.annotation.SuppressLint;
-import android.app.AlertDialog;
-import android.arch.persistence.room.Room;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.os.AsyncTask;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.text.NumberFormat;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+public class MainActivity extends AppCompatActivity implements TransactionDialogFragment.TransactionCallbackListener, TransactionViewAdapter.TransactionViewOnClickListener, TransactionDialogEdit.TransactionEditCallbackListener{
 
-import static com.pongmile.moneyflow.Constant.AMOUNT_COLUMN;
-import static com.pongmile.moneyflow.Constant.ITEM_COLUMN;
-import static com.pongmile.moneyflow.Constant.TYPE_COLUMN;
-
-public class MainActivity extends AppCompatActivity{
-
-    public static MoneyDB moneyDB;
-    private int allamount = 0;
-    private AlertDialog.Builder builderSingle;
-    private ArrayList<HashMap> list;
-
-    @BindView(R.id.amountTextView)
-    TextView amountTV;
+    private TransactionDialogFragment transactionDialogFragment;
+    private TransactionDialogEdit transactionDialogEdit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.bind(this, this);
-        builderSingle = new AlertDialog.Builder(this);
-        builderSingle.setTitle("เลือก");
-        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.select_dialog_singlechoice);
-        arrayAdapter.add("แก้ไข");
-        arrayAdapter.add("ลบ");
-        builderSingle.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-
-        moneyDB = Room.databaseBuilder(this, MoneyDB.class, "MONEY")
-                .allowMainThreadQueries()
-                .build();
-
-        ListView lview = (ListView) findViewById(R.id.listview);
-        Constant.keep_income = 0;
-        populateList();
-
-        listviewAdapter adapter = new listviewAdapter(this, list);
-        lview.setAdapter(adapter);
-        Constant.activity = this;
-
-        lview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, final int position, final long id) {
-
-                builderSingle.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
-                    @SuppressLint("StaticFieldLeak")
-                    @Override
-                    public void onClick(DialogInterface dialog, int menu) {
-                        if (menu == 0){
-                            Intent intent = new Intent(getApplicationContext(), AddActivity.class);
-                            intent.putExtra("position", position-1);
-                            Constant.Checkedit = 1;
-                            startActivity(intent);
-                        }else{
-
-                            new AsyncTask<Void, Void, List<Money>>() {
-                                @Override
-                                protected List<Money> doInBackground(Void... voids) {
-                                    List<Money> result = moneyDB.moneyDAO().allItem();
-                                    return result;
-                                }
-
-                                @Override
-                                protected void onPostExecute(List<Money> money) {
-                                    moneyDB.moneyDAO().delete(money.get(position-1).getId());
-                                }
-
-                                @Override
-                                protected void onProgressUpdate(Void... values) {
-                                }
-                            }.execute();
-
-                            reload();
-                        }
-
-                    }
-                });
-                builderSingle.show();
-            }
-        });
+        updateListView();
     }
 
-    public void reload() {
-        Intent intent = getIntent();
-        overridePendingTransition(0, 0);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-        finish();
-        overridePendingTransition(0, 0);
-        startActivity(intent);
+    public void onAddButtonPressed(View view) {
+        transactionDialogFragment = new TransactionDialogFragment();
+        transactionDialogFragment.setListener(this);
+        transactionDialogFragment.show(getSupportFragmentManager(), "Add new Transaction");
     }
 
-    @SuppressLint("StaticFieldLeak")
-    private void populateList() {
-        list = new ArrayList<HashMap>();
-        HashMap temp = new HashMap();
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public void onExpenseButtonPressed(View view) {
+        if(transactionDialogFragment != null) {
+            transactionDialogFragment.onExpenseButtonPressed();
+        }
 
-        temp.put(TYPE_COLUMN,"ประเภท");
-        temp.put(ITEM_COLUMN, "รายการ");
-        temp.put(AMOUNT_COLUMN, "จำนวน");
+        if(transactionDialogEdit != null) {
+            transactionDialogEdit.onExpenseButtonPressed();
+        }
 
-        list.add(temp);
-
-        new AsyncTask<Void, Void, List<Money>>() {
-            @Override
-            protected List<Money> doInBackground(Void... voids) {
-                List<Money> result = moneyDB.moneyDAO().allItem();
-                return result;
-            }
-
-            @Override
-            protected void onPostExecute(List<Money> monies) {
-                for (Money items: monies){
-                    HashMap temp = new HashMap();
-                    if (items.getType().equals("Income")) {
-                        temp.put(TYPE_COLUMN, "+");
-                        Constant.keep_income += items.getAmount();
-                        allamount += items.getAmount();
-
-                    }else{
-                        temp.put(TYPE_COLUMN, "-");
-                        allamount -= items.getAmount();
-                    }
-                    temp.put(ITEM_COLUMN, items.getItem());
-                    temp.put(AMOUNT_COLUMN, items.getAmount());
-                    list.add(temp);
-
-                }
-                ChangeColor(Constant.keep_income, allamount);
-                amountTV.setText('฿' + String.valueOf(allamount));
-            }
-
-            @Override
-            protected void onProgressUpdate(Void... values) {
-            }
-        }.execute();
     }
 
-    private void ChangeColor(int allmoneyincome, int moneyleft) {
-        if(allmoneyincome != 0) {
-            if (moneyleft * 100 / allmoneyincome > 50)
-                amountTV.setTextColor(getResources().getColor(R.color.green));
-            else if (moneyleft * 100 / allmoneyincome > 25)
-                amountTV.setTextColor(getResources().getColor(R.color.yellow));
-            else
-                amountTV.setTextColor(getResources().getColor(R.color.red));
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public void onIncomeButtonPressed(View view) {
+        if(transactionDialogFragment != null) {
+            transactionDialogFragment.onIncomeButtonPressed();
+        }
+
+        if(transactionDialogEdit != null) {
+            transactionDialogEdit.onIncomeButtonPressed();
         }
     }
 
+    @Override
+    public void onAddNewTransaction(int mode, String name, double amount) {
+        Toast.makeText(this, name + " " + amount, Toast.LENGTH_SHORT).show();
+        Transaction transaction = new Transaction();
+        transaction.setAmount(amount);
+        transaction.setMode(mode);
+        transaction.setName(name);
+        AppDatabase.getAppDatabase(this).transactionDao().insertAll(transaction);
+        updateListView();
+    }
 
-    @OnClick(R.id.AddButton)
-    public void add(){
-        Intent intent = new Intent(this, AddActivity.class);
-        startActivity(intent);
+    private String formatNumberString(double number) {
+        NumberFormat numberFormat = NumberFormat.getNumberInstance();
+        numberFormat.setGroupingUsed(true);
+
+        return  numberFormat.format(number);
+    }
+
+    private void updateListView() {
+        TextView balanceTextView = findViewById(R.id.balanceTextView);
+
+        Double sum = 0.0;
+        Double income = 0.0;
+
+        String output = "";
+
+        List<Transaction> allTransaction = AppDatabase.getAppDatabase(this).transactionDao().getAll();
+
+        for(Transaction transaction: allTransaction) {
+            output += transaction.getName() + " " + transaction.getAmount()*transaction.getMode();
+            sum += transaction.getAmount()*transaction.getMode();
+            if(transaction.getMode() == 1 ) {
+                income += transaction.getAmount();
+            }
+        }
+
+        balanceTextView.setText(formatNumberString(sum));
+
+        if(sum > income * 0.5) {
+            balanceTextView.setTextColor(Color.GREEN);
+        } else if (sum >= income * 0.25) {
+            balanceTextView.setTextColor(Color.YELLOW);
+        } else {
+            balanceTextView.setTextColor(Color.RED);
+        }
+
+        TransactionViewAdapter transactionViewAdapter = new TransactionViewAdapter();
+        transactionViewAdapter.setAllTransaction(allTransaction);
+        transactionViewAdapter.setListener(this);
+
+        RecyclerView recyclerView = findViewById(R.id.mainRecyclerView);
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
+        recyclerView.setAdapter(transactionViewAdapter);
+
+
+    }
+
+    @Override
+    public void onItemClicked(int position) {
+        List<Transaction> allTransaction = AppDatabase.getAppDatabase(this).transactionDao().getAll();
+        Transaction currentTransaction = allTransaction.get(position);
+
+        transactionDialogEdit = new TransactionDialogEdit();
+        transactionDialogEdit.setListener(this);
+        transactionDialogEdit.setupExistingDataField(position, currentTransaction.getMode(), currentTransaction.getName(), currentTransaction.getAmount());
+        transactionDialogEdit.show(getSupportFragmentManager(), "Edit Transaction");
+    }
+
+    @Override
+    public void onEditTransaction(int position, int mode, String name, double amount) {
+        List<Transaction> allTransaction = AppDatabase.getAppDatabase(this).transactionDao().getAll();
+        Transaction currentTransaction = allTransaction.get(position);
+        currentTransaction.setName(name);
+        currentTransaction.setMode(mode);
+        currentTransaction.setAmount(amount);
+
+        AppDatabase.getAppDatabase(this).transactionDao().update(currentTransaction);
+
+        updateListView();
+    }
+
+    @Override
+    public void onDeleteTransaction(int position) {
+        List<Transaction> allTransaction = AppDatabase.getAppDatabase(this).transactionDao().getAll();
+        Transaction currentTransaction = allTransaction.get(position);
+        AppDatabase.getAppDatabase(this).transactionDao().delete(currentTransaction);
+
+        updateListView();
     }
 }

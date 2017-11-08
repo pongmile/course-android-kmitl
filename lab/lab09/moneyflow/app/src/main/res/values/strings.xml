@@ -1,6 +1,3 @@
 <resources>
     <string name="app_name">moneyflow</string>
-    <string name="type">ประเภท</string>
-    <string name="income">รายรับ</string>
-    <string name="payment">รายจ่าย</string>
 </resources>
