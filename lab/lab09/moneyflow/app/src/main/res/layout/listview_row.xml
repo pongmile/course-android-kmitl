@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_list"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:weightSum="12">
+
+    <TextView
+        android:id="@+id/type"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        tools:text="First"
+        android:textColor="@color/black"
+        android:background="@drawable/border"
+        android:gravity="center_horizontal"
+        ></TextView>
+
+    <TextView
+        android:id="@+id/item"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="7"
+        tools:text="Second"
+        android:textColor="@color/black"
+        android:background="@drawable/border"></TextView>
+
+    <TextView
+        android:id="@+id/amount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        tools:text="Third"
+        android:textColor="@color/black"
+        android:background="@drawable/border"
+        android:gravity="right"></TextView>
+
+</LinearLayout>
